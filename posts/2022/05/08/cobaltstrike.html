@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>cobaltstrike学习与内网信息收集汇总 | 个人博客</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/wangdengdeng/favicon.ico">
+    <meta name="description" content="个人博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/wangdengdeng/assets/css/0.styles.aece1d96.css" as="style"><link rel="preload" href="/wangdengdeng/assets/js/app.f1f99d8b.js" as="script"><link rel="preload" href="/wangdengdeng/assets/js/6.e2e47644.js" as="script"><link rel="preload" href="/wangdengdeng/assets/js/16.62628b6e.js" as="script"><link rel="prefetch" href="/wangdengdeng/assets/js/10.03f88c15.js"><link rel="prefetch" href="/wangdengdeng/assets/js/11.72cf17ac.js"><link rel="prefetch" href="/wangdengdeng/assets/js/12.f671f075.js"><link rel="prefetch" href="/wangdengdeng/assets/js/13.617d7347.js"><link rel="prefetch" href="/wangdengdeng/assets/js/14.593cb0fe.js"><link rel="prefetch" href="/wangdengdeng/assets/js/15.0e5ed7f1.js"><link rel="prefetch" href="/wangdengdeng/assets/js/17.0a9a378d.js"><link rel="prefetch" href="/wangdengdeng/assets/js/18.6562709a.js"><link rel="prefetch" href="/wangdengdeng/assets/js/19.4e5da212.js"><link rel="prefetch" href="/wangdengdeng/assets/js/2.53fca3c4.js"><link rel="prefetch" href="/wangdengdeng/assets/js/20.3d1af487.js"><link rel="prefetch" href="/wangdengdeng/assets/js/21.9b13d7a3.js"><link rel="prefetch" href="/wangdengdeng/assets/js/22.40df8487.js"><link rel="prefetch" href="/wangdengdeng/assets/js/23.e0f56263.js"><link rel="prefetch" href="/wangdengdeng/assets/js/24.28ee286e.js"><link rel="prefetch" href="/wangdengdeng/assets/js/25.00bc6ec8.js"><link rel="prefetch" href="/wangdengdeng/assets/js/26.2309cdc0.js"><link rel="prefetch" href="/wangdengdeng/assets/js/3.cb810e63.js"><link rel="prefetch" href="/wangdengdeng/assets/js/4.6efe2eb7.js"><link rel="prefetch" href="/wangdengdeng/assets/js/5.63f29a16.js"><link rel="prefetch" href="/wangdengdeng/assets/js/7.8704393b.js"><link rel="prefetch" href="/wangdengdeng/assets/js/8.8ab062d7.js"><link rel="prefetch" href="/wangdengdeng/assets/js/9.6d7262ea.js">
+    <link rel="stylesheet" href="/wangdengdeng/assets/css/0.styles.aece1d96.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="global-layout" data-v-7f2e4136><header class="header-container" style="background-size:cover;background-repeat:no-repeat;background-position:center;background-attachment:scroll;background-image:url(/wangdengdeng/post-bg.jpeg);" data-v-93921ff8 data-v-7f2e4136><nav class="navbar" style="position:absolute;opacity:1;transition:all 0.5s ease-in-out;" data-v-93921ff8><a href="/wangdengdeng/" class="navbar-link router-link-active">
+    
+  </a> <ul class="navbar-links"><li><a href="/wangdengdeng/" class="router-link-active">
+        主页
+      </a></li><li><a href="/wangdengdeng/about/">
+        关于作者
+      </a></li><li><a href="/wangdengdeng/tags/">
+        技术栈
+      </a></li></ul> <div id="nav-icon"><span></span><span></span><span></span></div></nav> <div class="header-title" data-v-93921ff8 data-v-93921ff8><h1 data-v-93921ff8>cobaltstrike学习与内网信息收集汇总</h1> <p data-v-93921ff8></p></div></header> <div class="container" data-v-b3fda33c data-v-7f2e4136><main class="main" style="width:60%;" data-v-b3fda33c><div class="post" data-v-b3fda33c data-v-b3fda33c><article class="main-div"><div class="post-content content content__default"><p>本篇博客主要是对cobaltstrike的学习总结
+</p> <h2 id="cs服务器端部署位置"><a href="#cs服务器端部署位置" class="header-anchor">#</a> CS服务器端部署位置：</h2> <p>cd /usr/CS/cobaltstrike4.3/cobaltstrike4.3</p> <p>启动：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>./teamserver <span class="token number">114.132</span>.124.214 <span class="token function">passwd</span>
+</code></pre></div><h3 id="screen使用-解决云服务器分shell问题"><a href="#screen使用-解决云服务器分shell问题" class="header-anchor">#</a> screen使用（解决云服务器分shell问题）：</h3> <div class="language-powershell extra-class"><pre class="language-powershell"><code>screen  <span class="token operator">/</span><span class="token operator">/</span>创建新命令界面，并在此开启teamserver
+ctrl <span class="token operator">+</span>a+d <span class="token operator">/</span><span class="token operator">/</span>退出当前shell，进入主shell
+screen <span class="token operator">-</span><span class="token function">ls</span> <span class="token operator">/</span><span class="token operator">/</span>查看分任务列表
+screen <span class="token operator">-</span>r 任务编号进入任务
+<span class="token keyword">exit</span> 	<span class="token operator">/</span><span class="token operator">/</span>在分任务中执行，退出且关闭分任务一切进程
+</code></pre></div><h2 id="主机上线信息收集阶段-前置shell命令"><a href="#主机上线信息收集阶段-前置shell命令" class="header-anchor">#</a> 主机上线信息收集阶段(前置shell命令):</h2> <div class="language-powershell extra-class"><pre class="language-powershell"><code>ipconfig <span class="token operator">/</span>all	<span class="token comment">#主机ip</span>
+
+systeminfo <span class="token comment">#操作系统版本 | 补丁列表</span>
+
+wmic product get name<span class="token punctuation">,</span>version	<span class="token comment">#安装软件版本、路径</span>
+
+wmic service list brief	<span class="token comment">#服务信息查询</span>
+
+tasklist <span class="token operator">-</span>v	wmic <span class="token keyword">process</span> list brief	<span class="token comment">#进程查询</span>
+
+wmic startup get command<span class="token punctuation">,</span>caption	<span class="token comment">#启动项</span>
+
+net statistics workstation <span class="token comment">#开机时间</span>
+······································································
+wmic脚本工具 wmic_info<span class="token punctuation">.</span>rar 已上传
+······································································
+
+
+
+······································································
+
+net user <span class="token comment">#用户信息</span>
+
+net localgroup administrators 	<span class="token comment">#获取本地管理员或用户信息</span>
+
+query user <span class="token punctuation">|</span><span class="token punctuation">|</span> qwinsta <span class="token comment">#查看当前在线用户 winserver还有，7，10无</span>
+
+net session <span class="token comment"># 本地与客户端会话</span>
+
+·······································································
+
+netstat <span class="token operator">-</span>ano <span class="token comment">#端口信息</span>
+
+net share <span class="token comment">#本机共享列表</span>
+
+route print <span class="token comment">#路由表</span>
+
+arp <span class="token operator">-</span>a <span class="token comment">#arp缓存表</span>
+
+·······································································
+
+netsh firewall show config <span class="token comment">#查看防火墙配置</span>
+
+<span class="token comment">#实现防火墙开启关闭 </span>
+
+<span class="token operator">/</span><span class="token operator">/</span>server2003 之后
+netsh advfirewall <span class="token function">set</span> allprofiles state on 
+<span class="token operator">/</span><span class="token operator">/</span>server2003 之前
+netsh firewall <span class="token function">set</span> opmode disable <span class="token comment">#关闭</span>
+netsh firewall <span class="token function">set</span> opmode mode=enable <span class="token comment">#开启</span>
+
+
+·······································································
+
+whoami <span class="token comment">#获取域SID</span>
+
+net user XXX <span class="token operator">/</span>domain <span class="token comment">#指定用户详细信息</span>
+
+·······································································
+
+<span class="token comment">#判断是否存在域：</span>
+ipconfig/all
+
+nslookup 反差dns ip与域控是否一致
+
+net config workstation <span class="token comment"># 检查当前登录域信息</span>
+
+<span class="token comment">#检查 当前用户是否为域用户</span>
+
+net time <span class="token operator">/</span>domain
+拒绝访问	不为域用户
+返回time 	  存在且为域用户
+找不到域控	不存在域  ································判断域是否存在
+
+·······································································
+
+<span class="token comment">#域内存活主机检测	工具在靶机win7桌面 上传git-tools （工具\Neiwang）</span>
+1<span class="token punctuation">.</span>NetBIOS
+nbtscan<span class="token punctuation">.</span>exe 内网网段 <span class="token comment">#扫描内网网段 </span>
+
+2<span class="token punctuation">.</span>arp-scan
+arp-scan<span class="token punctuation">.</span>exe <span class="token operator">-</span>t 网段  不是很好用，建议结合netscan使用s
+
+3<span class="token punctuation">.</span>主机ping
+<span class="token keyword">for</span> <span class="token operator">/</span>L <span class="token operator">%</span>I in <span class="token punctuation">(</span>1<span class="token punctuation">,</span>1<span class="token punctuation">,</span>254<span class="token punctuation">)</span> <span class="token keyword">DO</span> @ping <span class="token operator">-</span>w 1 <span class="token operator">-</span>n 1 192<span class="token punctuation">.</span>168<span class="token punctuation">.</span>52<span class="token punctuation">.</span><span class="token operator">%</span>I <span class="token punctuation">|</span> findstr <span class="token string">&quot;TTL=&quot;</span>
+来自 192<span class="token punctuation">.</span>168<span class="token punctuation">.</span>52<span class="token punctuation">.</span>138 的回复: 字节=32 时间&lt;1ms TTL=128
+来自 192<span class="token punctuation">.</span>168<span class="token punctuation">.</span>52<span class="token punctuation">.</span>143 的回复: 字节=32 时间&lt;1ms TTL=128
+
+
+<span class="token comment">#端口扫描</span>
+4<span class="token punctuation">.</span>ScanLine <span class="token punctuation">(</span>tcp、udp扫描<span class="token punctuation">)</span>
+
+<span class="token function">sl</span><span class="token punctuation">.</span>exe <span class="token operator">-</span>h <span class="token operator">-</span>t 22<span class="token punctuation">,</span>80-89<span class="token punctuation">,</span>110<span class="token punctuation">,</span>445<span class="token punctuation">,</span>139<span class="token punctuation">,</span>389 <span class="token operator">-</span>u 53<span class="token punctuation">,</span>161 <span class="token operator">-</span>o <span class="token punctuation">.</span><span class="token operator">/</span>1<span class="token punctuation">.</span>txt <span class="token operator">-</span>p 192<span class="token punctuation">.</span>168<span class="token punctuation">.</span>244<span class="token punctuation">.</span>1<span class="token punctuation">.</span>1-254
+<span class="token operator">-</span>t tcp端口 <span class="token operator">-</span>u udp 
+
+5<span class="token punctuation">.</span>CS上线端口扫描
+</code></pre></div><h2 id="域信息收集"><a href="#域信息收集" class="header-anchor">#</a> 域信息收集</h2> <p>域信息收集：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#查询域：</span>
+net view /domain
+
+<span class="token comment">#域内所有计算机</span>
+net view /domain:GOD
+
+<span class="token comment">#查询所有用户信息</span>
+wmic useraccount get /all
+
+<span class="token comment">#存在用户信息：都是域管理工具，必须在windows server服务器上才有，</span>
+dsquery user
+</code></pre></div><h2 id="上线web服务器后的横向移动"><a href="#上线web服务器后的横向移动" class="header-anchor">#</a> 上线web服务器后的横向移动</h2> <blockquote><p>1.提权至system</p> <p>2.创建Beacon SMB 监听器</p> <p>3.在system主机上进行新建会话，指定SMB监听。</p> <p>4.在system主机<strong>SMB监听</strong>上进行 net view ,查找在线内网主机</p> <p>5.在目标机器上进行横向渗透，选择SMB监听，选择<strong>GOD.org</strong>域下用户名密码。</p> <p>6.上线。</p></blockquote></div></article> <div class="main-div vssue"><!----></div></div></main> <aside class="aside" data-v-b3fda33c data-v-b3fda33c><div class="info-card main-div" data-v-1311ce9e data-v-b3fda33c><div class="info-card-header" style="background-size:cover;background-repeat:no-repeat;background-position:center;background-attachment:scroll;background-image:url(/wangdengdeng/avatar-bg.jpeg);" data-v-1311ce9e><img src="/wangdengdeng/avatar-top.jpeg" alt="WangDengdeng" class="info-avatar" data-v-1311ce9e></div> <div class="info-card-body" data-v-1311ce9e><section class="info-name" data-v-1311ce9e>
+      WangDengdeng
+    </section> <section class="info-desc" data-v-1311ce9e>I am a slow walker, but I never walk backwards.<br/>道阻且长,行则将至</section> <section class="info-contact" data-v-1311ce9e><section data-v-1311ce9e><span data-v-1311ce9e data-v-1311ce9e><svg class="icon" style="font-size:1em;" data-v-1311ce9e data-v-1311ce9e><use xlink:href="#icon-location" data-v-1311ce9e data-v-1311ce9e></use></svg><span class="info-text" data-v-1311ce9e data-v-1311ce9e>
+          China
+        </span></span></section> <!----> <section data-v-1311ce9e><span data-v-1311ce9e data-v-1311ce9e><svg class="icon" style="font-size:1em;" data-v-1311ce9e data-v-1311ce9e><use xlink:href="#icon-email" data-v-1311ce9e data-v-1311ce9e></use></svg><span class="info-text" data-v-1311ce9e data-v-1311ce9e>
+          jimmybutler19@163.com
+        </span></span></section></section></div> <div class="info-card-footer" data-v-1311ce9e><p class="footer-sns-link" data-v-1311ce9e></p></div></div> <div class="post-toc main-div aside-toc" style="position:relative;top:0;width:0px;" data-v-b3fda33c><h4>- CATALOG</h4> <div class="post-nav-toc"><ul><li><a href="/wangdengdeng/posts/2022/05/08/cobaltstrike.html#cs服务器端部署位置">CS服务器端部署位置：</a><ul><li><a href="/wangdengdeng/posts/2022/05/08/cobaltstrike.html#screen使用-解决云服务器分shell问题">screen使用（解决云服务器分shell问题）：</a></li></ul></li><li><a href="/wangdengdeng/posts/2022/05/08/cobaltstrike.html#主机上线信息收集阶段-前置shell命令">主机上线信息收集阶段(前置shell命令):</a></li><li><a href="/wangdengdeng/posts/2022/05/08/cobaltstrike.html#域信息收集">域信息收集</a></li><li><a href="/wangdengdeng/posts/2022/05/08/cobaltstrike.html#上线web服务器后的横向移动">上线web服务器后的横向移动</a></li></ul></div></div></aside></div> <footer class="footer" data-v-7f2e4136><p class="footer-sns-link"></p> <div class="copyright"><span id="custom">Copyright &copy; WADE_2ng 2020 <br /> 
+        Theme By <a href="https://www.vuepress.cn/" target="_blank">VuePress</a></span> <!----></div></footer></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/wangdengdeng/assets/js/app.f1f99d8b.js" defer></script><script src="/wangdengdeng/assets/js/6.e2e47644.js" defer></script><script src="/wangdengdeng/assets/js/16.62628b6e.js" defer></script>
+  </body>
+</html>

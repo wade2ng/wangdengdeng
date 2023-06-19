@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Linux——Shell基础 | 个人博客</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/wangdengdeng/favicon.ico">
+    <meta name="description" content="个人博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/wangdengdeng/assets/css/0.styles.aece1d96.css" as="style"><link rel="preload" href="/wangdengdeng/assets/js/app.f1f99d8b.js" as="script"><link rel="preload" href="/wangdengdeng/assets/js/6.e2e47644.js" as="script"><link rel="preload" href="/wangdengdeng/assets/js/19.4e5da212.js" as="script"><link rel="prefetch" href="/wangdengdeng/assets/js/10.03f88c15.js"><link rel="prefetch" href="/wangdengdeng/assets/js/11.72cf17ac.js"><link rel="prefetch" href="/wangdengdeng/assets/js/12.f671f075.js"><link rel="prefetch" href="/wangdengdeng/assets/js/13.617d7347.js"><link rel="prefetch" href="/wangdengdeng/assets/js/14.593cb0fe.js"><link rel="prefetch" href="/wangdengdeng/assets/js/15.0e5ed7f1.js"><link rel="prefetch" href="/wangdengdeng/assets/js/16.62628b6e.js"><link rel="prefetch" href="/wangdengdeng/assets/js/17.0a9a378d.js"><link rel="prefetch" href="/wangdengdeng/assets/js/18.6562709a.js"><link rel="prefetch" href="/wangdengdeng/assets/js/2.53fca3c4.js"><link rel="prefetch" href="/wangdengdeng/assets/js/20.3d1af487.js"><link rel="prefetch" href="/wangdengdeng/assets/js/21.9b13d7a3.js"><link rel="prefetch" href="/wangdengdeng/assets/js/22.40df8487.js"><link rel="prefetch" href="/wangdengdeng/assets/js/23.e0f56263.js"><link rel="prefetch" href="/wangdengdeng/assets/js/24.28ee286e.js"><link rel="prefetch" href="/wangdengdeng/assets/js/25.00bc6ec8.js"><link rel="prefetch" href="/wangdengdeng/assets/js/26.2309cdc0.js"><link rel="prefetch" href="/wangdengdeng/assets/js/3.cb810e63.js"><link rel="prefetch" href="/wangdengdeng/assets/js/4.6efe2eb7.js"><link rel="prefetch" href="/wangdengdeng/assets/js/5.63f29a16.js"><link rel="prefetch" href="/wangdengdeng/assets/js/7.8704393b.js"><link rel="prefetch" href="/wangdengdeng/assets/js/8.8ab062d7.js"><link rel="prefetch" href="/wangdengdeng/assets/js/9.6d7262ea.js">
+    <link rel="stylesheet" href="/wangdengdeng/assets/css/0.styles.aece1d96.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="global-layout" data-v-7f2e4136><header class="header-container" style="background-size:cover;background-repeat:no-repeat;background-position:center;background-attachment:scroll;background-image:url(/wangdengdeng/post-bg.jpeg);" data-v-93921ff8 data-v-7f2e4136><nav class="navbar" style="position:absolute;opacity:1;transition:all 0.5s ease-in-out;" data-v-93921ff8><a href="/wangdengdeng/" class="navbar-link router-link-active">
+    
+  </a> <ul class="navbar-links"><li><a href="/wangdengdeng/" class="router-link-active">
+        主页
+      </a></li><li><a href="/wangdengdeng/about/">
+        关于作者
+      </a></li><li><a href="/wangdengdeng/tags/">
+        技术栈
+      </a></li></ul> <div id="nav-icon"><span></span><span></span><span></span></div></nav> <div class="header-title" data-v-93921ff8 data-v-93921ff8><h1 data-v-93921ff8>Linux——Shell基础</h1> <p data-v-93921ff8></p></div></header> <div class="container" data-v-b3fda33c data-v-7f2e4136><main class="main" style="width:60%;" data-v-b3fda33c><div class="post" data-v-b3fda33c data-v-b3fda33c><article class="main-div"><div class="post-content content content__default"><p>本篇博客主要是对Linux中常见Shell编写的总结（持续更新）</p> <h1 id="linux-shell基础"><a href="#linux-shell基础" class="header-anchor">#</a> Linux-Shell基础</h1> <h2 id="初始使用"><a href="#初始使用" class="header-anchor">#</a> 初始使用</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">## 1.sh</span>
+<span class="token comment">#!/bin/bash</span>
+<span class="token comment">#echo &quot;helloworld&quot;</span>
+
+<span class="token comment"># BianLiang ShenMing</span>
+<span class="token assign-left variable">wiseman</span><span class="token operator">=</span>wangdengdeng 变量赋值
+<span class="token builtin class-name">unset</span> wiseman 撤销赋值
+<span class="token comment">#jing tai bian liang -&gt; readonly 静态变量，不可unset撤销</span>
+<span class="token builtin class-name">readonly</span> <span class="token assign-left variable">shit</span><span class="token operator">=</span>goushi 
+
+<span class="token comment">#quan ju bian liang -&gt; export 全局变量</span>
+
+<span class="token comment"># $n </span>
+<span class="token comment"># $0 -&gt; jiaoben's name 0为sh名称</span>
+<span class="token comment"># $1-9 -&gt; 1-9 CanShu 1-9的为参数值</span>
+<span class="token comment"># 10&gt;&gt; -&gt; eg: ${10} 超过10的需要加{}</span>
+<span class="token comment">#echo $0 </span>
+<span class="token comment">#echo $1 </span>
+<span class="token comment">#echo $2</span>
+
+<span class="token comment"># ShuChu CanShu's count 参数的个数统计</span>
+<span class="token comment">#echo $#</span>
+
+<span class="token comment"># CanShu ZhengTi Hua 参数整体化</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$*</span>
+
+<span class="token comment">## 2.sh</span>
+<span class="token comment">#!/bin/bash</span>
+
+<span class="token comment"># SuoYou Canshu but Bushi Zhengti 所有参数但是不是整体</span>
+<span class="token comment">#echo $@</span>
+
+<span class="token comment"># Jiancha Zuihou Mingling Zhixing Return Status / 0 -&gt;right  not0 -&gt; error / used in Minglinghang 检查上次命令是否执行正确，用于命令行</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$?</span>
+
+</code></pre></div><h2 id="运算"><a href="#运算" class="header-anchor">#</a> 运算</h2> <p><strong>==只有expr能用不加括号写法，且必须空格！！！==</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># YunSuan  四则运算</span>
+<span class="token comment">#echo $((255+233))</span>
+
+<span class="token comment">#echo $[1+2]</span>
+<span class="token comment"># 必须空格 除法是向下取整</span>
+<span class="token function">expr</span> <span class="token number">1</span> + <span class="token number">1</span>
+<span class="token function">expr</span> <span class="token number">2</span> - <span class="token number">1</span>
+<span class="token function">expr</span> <span class="token number">1</span> <span class="token punctuation">\</span>* <span class="token number">0</span>
+<span class="token function">expr</span> <span class="token number">1</span> / <span class="token number">2</span>
+
+</code></pre></div><h2 id="条件判断"><a href="#条件判断" class="header-anchor">#</a> 条件判断</h2> <h3 id="写法"><a href="#写法" class="header-anchor">#</a> 写法</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span> condition <span class="token punctuation">]</span> <span class="token comment"># 条件前后必须有空格</span>
+
+<span class="token comment">#判断</span>
+<span class="token comment">#条件正误： 可以 $? 执行正确（条件成立）返回0</span>
+<span class="token comment">#结合管道符判断  [ condition ] &amp;&amp; echo &quot;True&quot;</span>
+</code></pre></div><h4 id="管道符复习"><a href="#管道符复习" class="header-anchor">#</a> 管道符复习</h4> <table><thead><tr><th>命令</th> <th>连接符解释</th></tr></thead> <tbody><tr><td>c1 &amp; c2</td> <td>1和2同时执行，==不论1的真假==，并返回所有结果</td></tr> <tr><td>c1 &amp;&amp; c2</td> <td>先执行1，1为真再执行2，并返回所有结果,<strong>若1为假</strong>，返回1的错误信息，不执行2</td></tr> <tr><td>c1 | c2</td> <td>不管1的真假，只会执行2，返回2的信息，2错误无回显</td></tr> <tr><td>c1 || c2</td> <td>1，2都真，<strong>返回1</strong>，==1假，执行2==，返回1的错误信息</td></tr> <tr><td>c1；c2</td> <td>先1后2，1错误执行2，都会返回 ==Linux==</td></tr></tbody></table> <h3 id="整数比较"><a href="#整数比较" class="header-anchor">#</a> 整数比较</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">=</span> 字符串比较 <span class="token comment"># eg: [ shit = she ]</span>
+
+<span class="token parameter variable">-lt</span> 小于（less than）			<span class="token parameter variable">-le</span> 小于等于（less equal）
+<span class="token parameter variable">-eq</span> 等于（equal）				<span class="token parameter variable">-gt</span> 大于（greater than）
+<span class="token parameter variable">-ge</span> 大于等于（greater equal）	    <span class="token parameter variable">-ne</span> 不等于（Not equal）
+<span class="token comment">#eg: [ 23 -gt 1 ]</span>
+</code></pre></div><h3 id="文件判断"><a href="#文件判断" class="header-anchor">#</a> 文件判断</h3> <p>用<code>ll</code>不更快。。</p> <h4 id="权限"><a href="#权限" class="header-anchor">#</a> 权限</h4> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token parameter variable">-r</span> 有读的权限（read）			<span class="token parameter variable">-w</span> 有写的权限（write）
+<span class="token parameter variable">-x</span> 有执行的权限（execute）
+
+<span class="token comment">#eg:</span>
+<span class="token punctuation">[</span> <span class="token parameter variable">-r</span> <span class="token number">1</span>.sh <span class="token punctuation">]</span>
+</code></pre></div><h4 id="类型"><a href="#类型" class="header-anchor">#</a> 类型</h4> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token parameter variable">-f</span> 文件存在并且是一个常规的文件（file）
+<span class="token parameter variable">-e</span> 文件存在（existence）		     <span class="token parameter variable">-d</span> 文件存在并是一个目录（directory）
+</code></pre></div><h3 id="if语句"><a href="#if语句" class="header-anchor">#</a> if语句</h3> <blockquote><p>和判断式相同，condition两边必须空格</p></blockquote> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token keyword">if</span> <span class="token punctuation">[</span> 条件判断式 <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span> 
+  程序 
+<span class="token keyword">else</span>
+  程序 
+<span class="token keyword">fi</span> 
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> 条件判断式 <span class="token punctuation">]</span> 
+  <span class="token keyword">then</span> 
+    程序 
+<span class="token keyword">elif</span> <span class="token punctuation">[</span> 条件表达式 <span class="token punctuation">]</span>  
+  <span class="token keyword">then</span> 
+    程序   
+<span class="token keyword">else</span>
+  程序 
+<span class="token keyword">fi</span>  <span class="token comment"># 在if的结尾必须添加 fi，作为if语句结束符</span>
+</code></pre></div><h2 id="case语句"><a href="#case语句" class="header-anchor">#</a> case语句</h2> <blockquote><p>注意</p> <p>1.匹配值右边必须加右括号</p> <p>2.每次匹配之后的==;;==相当于<strong>break</strong></p> <p>3.==*)==相当于default</p> <p>4.case结尾加==esac==</p></blockquote> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token keyword">case</span> $变量名 <span class="token keyword">in</span> 
+<span class="token string">&quot;值1&quot;</span>） 
+    如果变量的值等于值1，则执行程序1 
+<span class="token punctuation">;</span><span class="token punctuation">;</span> 
+<span class="token string">&quot;值2&quot;</span>） <span class="token comment"># 整数可不加“” </span>
+    如果变量的值等于值2，则执行程序2 
+<span class="token punctuation">;</span><span class="token punctuation">;</span> 
+*） 
+    如果变量的值都不是以上的值，则执行此程序 
+<span class="token punctuation">;</span><span class="token punctuation">;</span> 
+<span class="token keyword">esac</span>
+
+</code></pre></div><h3 id="for循环"><a href="#for循环" class="header-anchor">#</a> for循环</h3> <blockquote><p>注意</p> <p>条件循环为双括号，列表循环是{1..5},两点，或者<code>seq 5</code></p></blockquote> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment">#条件循环</span>
+<span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span> 初始值<span class="token punctuation">;</span>循环控制条件<span class="token punctuation">;</span>变量变化 <span class="token punctuation">))</span></span> 
+<span class="token keyword">do</span> 
+    程序 
+<span class="token keyword">done</span>
+<span class="token comment">#列表循环</span>
+<span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">..</span><span class="token number">5</span><span class="token punctuation">}</span>
+<span class="token keyword">do</span> 
+<span class="token builtin class-name">echo</span> <span class="token variable">$i</span>
+<span class="token keyword">done</span>
+
+<span class="token comment">#eg:</span>
+ 	  <span class="token number">1</span> <span class="token comment">#!/bin/bash</span>
+      <span class="token number">2</span> 
+      <span class="token number">3</span> <span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">))</span></span>
+      <span class="token number">4</span> <span class="token keyword">do</span>
+      <span class="token number">5</span> <span class="token builtin class-name">echo</span> <span class="token string">&quot;shit&quot;</span>
+      <span class="token number">6</span> <span class="token keyword">done</span>
+      <span class="token number">7</span> 
+      <span class="token number">8</span> <span class="token keyword">for</span> <span class="token for-or-select variable">wdd</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">..</span><span class="token number">3</span><span class="token punctuation">}</span> <span class="token comment">#				 seq 3 	另一种写法</span>
+      <span class="token number">9</span> <span class="token keyword">do</span>
+     <span class="token number">10</span> <span class="token builtin class-name">echo</span> <span class="token variable">$wdd</span>
+     <span class="token number">11</span> <span class="token keyword">done</span>
+</code></pre></div><h4 id="示例脚本"><a href="#示例脚本" class="header-anchor">#</a> 示例脚本：</h4> <p>ping 主机存活检测</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token keyword">for</span> <span class="token for-or-select variable">IP</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> /root/for/ip.txt<span class="token variable">`</span></span>    <span class="token comment">#ip文件为存放ip地址的</span>
+<span class="token keyword">do</span>
+  <span class="token function">ping</span> <span class="token parameter variable">-c</span> <span class="token number">3</span> <span class="token parameter variable">-i</span> <span class="token number">0.2</span> <span class="token parameter variable">-w</span> <span class="token number">3</span> <span class="token variable">$IP</span> <span class="token operator">&amp;&gt;</span>/dev/null <span class="token comment">#-c 3 ping 3次主机 -i 0.2ping主机间隔 -w 3ping主机超时间隔   &amp;&gt; 结果写入</span>
+  <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">&quot;host <span class="token variable">$IP</span> is up&quot;</span>
+  <span class="token keyword">else</span> <span class="token builtin class-name">echo</span> <span class="token string">&quot;host <span class="token variable">$IP</span> is down&quot;</span>
+  <span class="token keyword">fi</span>
+<span class="token keyword">done</span>
+</code></pre></div><h3 id="while循环"><a href="#while循环" class="header-anchor">#</a> while循环</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>	  <span class="token number">1</span> <span class="token comment">#!/bin/bash</span>
+      <span class="token number">2</span> 
+      <span class="token number">3</span> 
+      <span class="token number">4</span> <span class="token assign-left variable">flag</span><span class="token operator">=</span><span class="token number">5</span>
+      <span class="token number">5</span> 
+      <span class="token number">6</span> <span class="token keyword">while</span> <span class="token punctuation">[</span> <span class="token variable">$flag</span> <span class="token parameter variable">-gt</span> <span class="token number">1</span> <span class="token punctuation">]</span> <span class="token comment"># 必须加空格</span>
+      <span class="token number">7</span> <span class="token keyword">do</span>
+      <span class="token number">8</span> <span class="token builtin class-name">echo</span> <span class="token variable">$flag</span>
+      <span class="token number">9</span> <span class="token assign-left variable">flag</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>flag <span class="token operator">-</span> <span class="token number">1</span><span class="token variable">))</span></span>
+     <span class="token number">10</span> <span class="token keyword">done</span>
+
+</code></pre></div><blockquote><p>注意：</p> <p>1.在条件判断中使用变量必须加==$==</p> <p>2.正确写计算式：</p> <p><code>$((1+1 ))</code>  、<code>$[1+1]</code>  参数自增 ： <code>((i++))</code></p></blockquote> <h3 id="read函数"><a href="#read函数" class="header-anchor">#</a> read函数</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>	  <span class="token number">1</span> <span class="token comment">#!/bin/bash</span>
+      <span class="token number">2</span> 
+      <span class="token number">3</span> <span class="token builtin class-name">read</span> <span class="token parameter variable">-t</span> <span class="token number">10</span> <span class="token parameter variable">-p</span> <span class="token string">&quot;name:&quot;</span> name
+      <span class="token number">4</span> <span class="token builtin class-name">echo</span> <span class="token string">&quot;your name is:&quot;</span> <span class="token variable">$name</span>
+
+</code></pre></div><p><strong>-t 指定读取参数等待时间	-p 指定提示符</strong></p> <h2 id="系统函数"><a href="#系统函数" class="header-anchor">#</a> 系统函数</h2> <h3 id="basename"><a href="#basename" class="header-anchor">#</a> basename</h3> <blockquote><p>获取绝对路径下文件名 （后缀可去）</p></blockquote> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">basename</span> /server/scripts/1.txt <span class="token punctuation">[</span>无参数<span class="token punctuation">]</span>
+<span class="token comment"># 1.txt 返回路径末尾文件名/文件夹名 带后缀</span>
+
+<span class="token function">basename</span> /server/scripts/1.txt .txt
+<span class="token comment"># 1 去后缀返回</span>
+
+<span class="token function">basename</span> /server/scripts/1qwe.txt we.txt
+<span class="token comment"># 1q 最后一个 / 之后可以进行随意截断输出</span>
+</code></pre></div><h3 id="dirname"><a href="#dirname" class="header-anchor">#</a> dirname</h3> <blockquote><p>获取绝对路径的路径（最后一个  / 之前的内容进行输出）</p></blockquote> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">dirname</span> /server/scripts/1.txt
+<span class="token comment"># /server/scripts</span>
+</code></pre></div><h3 id="cut"><a href="#cut" class="header-anchor">#</a> cut</h3> <blockquote><p>-f 提取第几列 -d 分隔符</p></blockquote> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>root@localhost scripts<span class="token punctuation">]</span><span class="token comment"># cut -f 1 -d &quot; &quot; cut.txt</span>
+sir
+wangdengdeng123
+<span class="token number">213123</span>
+<span class="token number">233</span>
+</code></pre></div></div></article> <div class="main-div vssue"><!----></div></div></main> <aside class="aside" data-v-b3fda33c data-v-b3fda33c><div class="info-card main-div" data-v-1311ce9e data-v-b3fda33c><div class="info-card-header" style="background-size:cover;background-repeat:no-repeat;background-position:center;background-attachment:scroll;background-image:url(/wangdengdeng/avatar-bg.jpeg);" data-v-1311ce9e><img src="/wangdengdeng/avatar-top.jpeg" alt="WangDengdeng" class="info-avatar" data-v-1311ce9e></div> <div class="info-card-body" data-v-1311ce9e><section class="info-name" data-v-1311ce9e>
+      WangDengdeng
+    </section> <section class="info-desc" data-v-1311ce9e>I am a slow walker, but I never walk backwards.<br/>道阻且长,行则将至</section> <section class="info-contact" data-v-1311ce9e><section data-v-1311ce9e><span data-v-1311ce9e data-v-1311ce9e><svg class="icon" style="font-size:1em;" data-v-1311ce9e data-v-1311ce9e><use xlink:href="#icon-location" data-v-1311ce9e data-v-1311ce9e></use></svg><span class="info-text" data-v-1311ce9e data-v-1311ce9e>
+          China
+        </span></span></section> <!----> <section data-v-1311ce9e><span data-v-1311ce9e data-v-1311ce9e><svg class="icon" style="font-size:1em;" data-v-1311ce9e data-v-1311ce9e><use xlink:href="#icon-email" data-v-1311ce9e data-v-1311ce9e></use></svg><span class="info-text" data-v-1311ce9e data-v-1311ce9e>
+          jimmybutler19@163.com
+        </span></span></section></section></div> <div class="info-card-footer" data-v-1311ce9e><p class="footer-sns-link" data-v-1311ce9e></p></div></div> <div class="post-toc main-div aside-toc" style="position:relative;top:0;width:0px;" data-v-b3fda33c><h4>- CATALOG</h4> <div class="post-nav-toc"><ul><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#初始使用">初始使用</a></li><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#运算">运算</a></li><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#条件判断">条件判断</a><ul><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#写法">写法</a></li><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#整数比较">整数比较</a></li><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#文件判断">文件判断</a></li><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#if语句">if语句</a></li></ul></li><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#case语句">case语句</a><ul><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#for循环">for循环</a></li><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#while循环">while循环</a></li><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#read函数">read函数</a></li></ul></li><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#系统函数">系统函数</a><ul><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#basename">basename</a></li><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#dirname">dirname</a></li><li><a href="/wangdengdeng/posts/2023/03/29/linuxshell%E5%9F%BA%E7%A1%80.html#cut">cut</a></li></ul></li></ul></div></div></aside></div> <footer class="footer" data-v-7f2e4136><p class="footer-sns-link"></p> <div class="copyright"><span id="custom">Copyright &copy; WADE_2ng 2020 <br /> 
+        Theme By <a href="https://www.vuepress.cn/" target="_blank">VuePress</a></span> <!----></div></footer></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/wangdengdeng/assets/js/app.f1f99d8b.js" defer></script><script src="/wangdengdeng/assets/js/6.e2e47644.js" defer></script><script src="/wangdengdeng/assets/js/19.4e5da212.js" defer></script>
+  </body>
+</html>

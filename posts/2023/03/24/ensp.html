@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ENSP路由模拟器指令学习 | 个人博客</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/wangdengdeng/favicon.ico">
+    <meta name="description" content="个人博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/wangdengdeng/assets/css/0.styles.aece1d96.css" as="style"><link rel="preload" href="/wangdengdeng/assets/js/app.f1f99d8b.js" as="script"><link rel="preload" href="/wangdengdeng/assets/js/6.e2e47644.js" as="script"><link rel="preload" href="/wangdengdeng/assets/js/18.6562709a.js" as="script"><link rel="prefetch" href="/wangdengdeng/assets/js/10.03f88c15.js"><link rel="prefetch" href="/wangdengdeng/assets/js/11.72cf17ac.js"><link rel="prefetch" href="/wangdengdeng/assets/js/12.f671f075.js"><link rel="prefetch" href="/wangdengdeng/assets/js/13.617d7347.js"><link rel="prefetch" href="/wangdengdeng/assets/js/14.593cb0fe.js"><link rel="prefetch" href="/wangdengdeng/assets/js/15.0e5ed7f1.js"><link rel="prefetch" href="/wangdengdeng/assets/js/16.62628b6e.js"><link rel="prefetch" href="/wangdengdeng/assets/js/17.0a9a378d.js"><link rel="prefetch" href="/wangdengdeng/assets/js/19.4e5da212.js"><link rel="prefetch" href="/wangdengdeng/assets/js/2.53fca3c4.js"><link rel="prefetch" href="/wangdengdeng/assets/js/20.3d1af487.js"><link rel="prefetch" href="/wangdengdeng/assets/js/21.9b13d7a3.js"><link rel="prefetch" href="/wangdengdeng/assets/js/22.40df8487.js"><link rel="prefetch" href="/wangdengdeng/assets/js/23.e0f56263.js"><link rel="prefetch" href="/wangdengdeng/assets/js/24.28ee286e.js"><link rel="prefetch" href="/wangdengdeng/assets/js/25.00bc6ec8.js"><link rel="prefetch" href="/wangdengdeng/assets/js/26.2309cdc0.js"><link rel="prefetch" href="/wangdengdeng/assets/js/3.cb810e63.js"><link rel="prefetch" href="/wangdengdeng/assets/js/4.6efe2eb7.js"><link rel="prefetch" href="/wangdengdeng/assets/js/5.63f29a16.js"><link rel="prefetch" href="/wangdengdeng/assets/js/7.8704393b.js"><link rel="prefetch" href="/wangdengdeng/assets/js/8.8ab062d7.js"><link rel="prefetch" href="/wangdengdeng/assets/js/9.6d7262ea.js">
+    <link rel="stylesheet" href="/wangdengdeng/assets/css/0.styles.aece1d96.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="global-layout" data-v-7f2e4136><header class="header-container" style="background-size:cover;background-repeat:no-repeat;background-position:center;background-attachment:scroll;background-image:url(/wangdengdeng/post-bg.jpeg);" data-v-93921ff8 data-v-7f2e4136><nav class="navbar" style="position:absolute;opacity:1;transition:all 0.5s ease-in-out;" data-v-93921ff8><a href="/wangdengdeng/" class="navbar-link router-link-active">
+    
+  </a> <ul class="navbar-links"><li><a href="/wangdengdeng/" class="router-link-active">
+        主页
+      </a></li><li><a href="/wangdengdeng/about/">
+        关于作者
+      </a></li><li><a href="/wangdengdeng/tags/">
+        技术栈
+      </a></li></ul> <div id="nav-icon"><span></span><span></span><span></span></div></nav> <div class="header-title" data-v-93921ff8 data-v-93921ff8><h1 data-v-93921ff8>ENSP路由模拟器指令学习</h1> <p data-v-93921ff8></p></div></header> <div class="container" data-v-b3fda33c data-v-7f2e4136><main class="main" style="width:60%;" data-v-b3fda33c><div class="post" data-v-b3fda33c data-v-b3fda33c><article class="main-div"><div class="post-content content content__default"><p>本篇博客主要是对 ENSP常见命令的学习总结（持续更新）
+</p> <h2 id="路由器相关配置"><a href="#路由器相关配置" class="header-anchor">#</a> 路由器相关配置</h2> <h3 id="取消警告及提示信息"><a href="#取消警告及提示信息" class="header-anchor">#</a> 取消警告及提示信息</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>R1<span class="token punctuation">]</span>un <span class="token keyword">in</span> en
+</code></pre></div><h2 id="清除配置"><a href="#清除配置" class="header-anchor">#</a> 清除配置</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token operator">&lt;</span>R<span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span>reset saved-configuration
+</code></pre></div><h3 id="_1-接口配置"><a href="#_1-接口配置" class="header-anchor">#</a> 1.接口配置</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>int g0/0/0 <span class="token comment">#进入接口</span>
+
+<span class="token function">ip</span> <span class="token function">add</span> <span class="token number">192.168</span>.1.1  <span class="token comment"># 添加ip</span>
+</code></pre></div><h3 id="_2-接口信息查询"><a href="#_2-接口信息查询" class="header-anchor">#</a> 2.接口信息查询：</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>dis int brief <span class="token comment">#只能查询到接口开放状态</span>
+
+dis <span class="token function">ip</span> int brief <span class="token comment"># 接口绑定IP查询</span>
+
+dis <span class="token function">ip</span> routing-table <span class="token comment">#路由表查询</span>
+</code></pre></div><h2 id="交换机配置"><a href="#交换机配置" class="header-anchor">#</a> 交换机配置</h2> <div class="language-shell extra-class"><pre class="language-shell"><code>int vlan <span class="token number">1</span> <span class="token comment">#创建vlan</span>
+
+<span class="token function">ip</span> <span class="token function">add</span> <span class="token function">ip</span> <span class="token number">24</span> <span class="token comment"># ip绑定</span>
+
+dis this <span class="token comment">#查看当前vlan （也适用于路由）</span>
+
+info-center <span class="token builtin class-name">source</span> ds channel <span class="token number">0</span> log state off <span class="token builtin class-name">trap</span> state off <span class="token comment">#取消交换机告警</span>
+
+un <span class="token keyword">in</span> en <span class="token comment">#取消警告</span>
+
+
+<span class="token comment"># dhcp配置</span>
+
+dhcp <span class="token builtin class-name">enable</span>
+
+dhcp <span class="token keyword">select</span> interface   //开启接口的DHCP服务功能，选用接口地址池
+
+<span class="token comment"># 设置access口</span>
+port link-type access
+</code></pre></div><h2 id="静态路由配置"><a href="#静态路由配置" class="header-anchor">#</a> 静态路由配置：</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">ip</span> route-static 你要去的ip 要去ip的掩码 必须经过的ip地址
+</code></pre></div><h2 id="ospf配置"><a href="#ospf配置" class="header-anchor">#</a> ospf配置：</h2> <p>拓扑：</p> <p><img src="https://wangdengdeng.oss-cn-hangzhou.aliyuncs.com/NewPic/202303230938742.png" alt="image-20230323093803617"></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>R1<span class="token punctuation">]</span>ospf <span class="token number">1</span> router-id <span class="token punctuation">(</span>loop地址<span class="token punctuation">)</span> 
+	
+	area <span class="token number">0</span> 
+	
+	network <span class="token punctuation">(</span>添加相邻网段<span class="token punctuation">)</span>
+	
+	成功回显 ：Neighbor changes eve
+nt: neighbor status changed. <span class="token punctuation">(</span>ProcessId<span class="token operator">=</span><span class="token number">256</span>, <span class="token assign-left variable">NeighborAddress</span><span class="token operator">=</span><span class="token number">1.12</span>.33.10, Neighbo
+<span class="token assign-left variable">rEvent</span><span class="token operator">=</span>HelloReceived, <span class="token assign-left variable">NeighborPreviousState</span><span class="token operator">=</span>Down, <span class="token assign-left variable">NeighborCurrentState</span><span class="token operator">=</span>Init<span class="token punctuation">)</span>
+
+	dis ospf peer <span class="token comment">#查看邻居信息</span>
+		回显：
+			DR: <span class="token number">10.33</span>.13.1  BDR: <span class="token number">10.33</span>.13.2  MTU: <span class="token number">0</span> <span class="token comment">#非抢占式的DR选择</span>
+			
+	dis ospf peer brief <span class="token comment">#邻居信息表</span>
+		回显：
+		 OSPF Process <span class="token number">1</span> with Router ID <span class="token number">10.0</span>.1.1
+		  Peer Statistic Information
+ 			----------------------------------------------------------------------------
+             Area Id          Interface                        Neighbor <span class="token function">id</span>      State    
+             <span class="token number">0.0</span>.0.0          GigabitEthernet0/0/0             <span class="token number">10.33</span>.2.2        Full        
+             <span class="token number">0.0</span>.0.0          GigabitEthernet0/0/1             <span class="token number">10.33</span>.3.3        Full        
+
+             ----------------------------------------------------------------------------
+
+</code></pre></div><h3 id="ospf-修改hello和time"><a href="#ospf-修改hello和time" class="header-anchor">#</a> ospf 修改Hello和time</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>dis ospf int g0/0/0 <span class="token comment">#查看接口指向下一网络的ospf配置</span>
+			回显：
+			Timers: Hello <span class="token number">10</span> , Dead <span class="token number">40</span> , Poll  <span class="token number">120</span> , Retransmit <span class="token number">5</span> , Transmit Delay <span class="token number">1</span> 
+
+dis timer hello <span class="token punctuation">(</span>x秒<span class="token punctuation">)</span> <span class="token comment">#修改</span>
+		  dead <span class="token punctuation">(</span>x秒<span class="token punctuation">)</span>	
+		  <span class="token comment"># 此时查看ospf brief，发现修改之后的端口无法与R1建立邻居关系</span>
+</code></pre></div><h3 id="ospf-默认路由发布"><a href="#ospf-默认路由发布" class="header-anchor">#</a> ospf 默认路由发布</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">ip</span> route-static <span class="token number">0.0</span>.0.0 <span class="token number">0</span> Loopback <span class="token number">2</span> <span class="token comment">#默认路由配置</span>
+
+ospf <span class="token number">1</span>
+
+default-route-advertise <span class="token comment">#ospf发布</span>
+</code></pre></div><h3 id="ospf-dr-bdr选举控制"><a href="#ospf-dr-bdr选举控制" class="header-anchor">#</a> ospf DR/BDR选举控制</h3> <blockquote><p>在未设置优先级时，默认优先级都为1。且此时两个路由器会选择route-id较大的那个作为DR，另一个为BDR。</p></blockquote> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 正确查看DR和BDR ！！！！</span>
+<span class="token punctuation">[</span>R1<span class="token punctuation">]</span>dis ospf peer <span class="token punctuation">(</span>与R1直连的路由器loop <span class="token function">ip</span><span class="token punctuation">)</span> <span class="token comment">#才能找到对应的DR，直接peer会显示邻居DR</span>
+
+	int g0/0/0
+	
+	ospf dr-priority <span class="token number">200</span> <span class="token comment">#修改优先级</span>
+
+<span class="token punctuation">[</span>R2<span class="token punctuation">]</span>int g0/0/1
+
+	ospf dr-priority <span class="token number">100</span> 
+	
+	<span class="token comment">#注意！！！</span>
+	<span class="token comment">#在端口修改优先级之后要重启端口</span>
+	<span class="token comment"># shutdown /  undo shutdown</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>改之前：
+dis ospf peer <span class="token number">10.33</span>.3.3
+
+	 OSPF Process <span class="token number">1</span> with Router ID <span class="token number">10.0</span>.1.1
+		 Neighbors 
+
+ Area <span class="token number">0.0</span>.0.0 interface <span class="token number">10.33</span>.13.1<span class="token punctuation">(</span>GigabitEthernet0/0/1<span class="token punctuation">)</span><span class="token string">'s neighbors
+ Router ID: 10.33.3.3        Address: 10.33.13.2      
+   State: Full  Mode:Nbr is  Master  Priority: 1
+   
+   #  DR: 10.33.13.2  BDR: 10.33.13.1  MTU: 0    
+   
+   Dead timer due in 40  sec 
+   Retrans timer interval: 5 
+   Neighbor is up for 00:11:17     
+   Authentication Sequence: [ 0 ] 
+之后：
+OSPF Process 1 with Router ID 10.0.1.1
+		 Neighbors 
+
+ Area 0.0.0.0 interface 10.33.13.1(GigabitEthernet0/0/1)'</span>s neighbors
+ Router ID: <span class="token number">10.33</span>.3.3        Address: <span class="token number">10.33</span>.13.2      
+   State: Full  Mode:Nbr is  Master  Priority: <span class="token number">100</span>
+   
+   <span class="token comment"># DR: 10.33.13.1  BDR: 10.33.13.2  MTU: 0    </span>
+   
+   Dead timer due <span class="token keyword">in</span> <span class="token number">33</span>  sec 
+   Retrans timer interval: <span class="token number">5</span> 
+   Neighbor is up <span class="token keyword">for</span> 00:00:45     
+   Authentication Sequence: <span class="token punctuation">[</span> <span class="token number">0</span> <span class="token punctuation">]</span> 
+</code></pre></div><h2 id="isis协议配置"><a href="#isis协议配置" class="header-anchor">#</a> ISIS协议配置</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>R3-GigabitEthernet0/0/2<span class="token punctuation">]</span>isis
+<span class="token punctuation">[</span>R3-isis-1<span class="token punctuation">]</span>network-entity <span class="token number">49.0001</span>.0000.0000.0002.00
+Mar <span class="token number">31</span> <span class="token number">2023</span> <span class="token number">19</span>:12:50-08:00 R3 %%01ISIS/4/START_ENABLE_ISIS<span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>:ISIS <span class="token number">256</span> <span class="token builtin class-name">enable</span>
+d all ISIS modules. 
+<span class="token punctuation">[</span>R3-isis-1<span class="token punctuation">]</span>is-level level-1
+Info: IS Level Changed, Resetting ISIS<span class="token punctuation">..</span>.
+Mar <span class="token number">31</span> <span class="token number">2023</span> <span class="token number">19</span>:13:02-08:00 R3 %%01ISIS/4/START_DISABLE_ISIS<span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>:ISIS <span class="token number">256</span> disab
+led all ISIS modules. 
+<span class="token punctuation">[</span>R3-isis-1<span class="token punctuation">]</span>
+Mar <span class="token number">31</span> <span class="token number">2023</span> <span class="token number">19</span>:13:02-08:00 R3 %%01ISIS/4/START_ENABLE_ISIS<span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span>:ISIS <span class="token number">256</span> <span class="token builtin class-name">enable</span>
+d all ISIS modules. 
+<span class="token punctuation">[</span>R3-isis-1<span class="token punctuation">]</span>int g0/0/2
+<span class="token punctuation">[</span>R3-GigabitEthernet0/0/2<span class="token punctuation">]</span>isis <span class="token builtin class-name">enable</span> <span class="token number">1</span>
+
+</code></pre></div><h2 id="bgp协议的配置"><a href="#bgp协议的配置" class="header-anchor">#</a> BGP协议的配置</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>R2<span class="token punctuation">]</span>bgp <span class="token number">200</span>
+<span class="token punctuation">[</span>R2-bgp<span class="token punctuation">]</span>router-id <span class="token number">2.2</span>.2.2
+<span class="token punctuation">[</span>R2-bgp<span class="token punctuation">]</span>peer <span class="token number">3.3</span>.3.3 as-number <span class="token number">200</span>
+<span class="token punctuation">[</span>R2-bgp<span class="token punctuation">]</span>peer <span class="token number">3.3</span>.3.3 connect-int loop <span class="token number">0</span>
+<span class="token punctuation">[</span>R2-bgp<span class="token punctuation">]</span>peer <span class="token number">3.3</span>.3.3 next-hop-local
+<span class="token punctuation">[</span>R2-bgp<span class="token punctuation">]</span>dis this
+<span class="token punctuation">[</span>V200R003C00<span class="token punctuation">]</span>
+<span class="token comment">#</span>
+bgp <span class="token number">200</span>
+ router-id <span class="token number">2.2</span>.2.2
+ peer <span class="token number">3.3</span>.3.3 as-number <span class="token number">200</span> 
+ peer <span class="token number">3.3</span>.3.3 connect-interface LoopBack0
+ <span class="token comment">#</span>
+ ipv4-family unicast
+  undo synchronization
+  peer <span class="token number">3.3</span>.3.3 <span class="token builtin class-name">enable</span>
+  peer <span class="token number">3.3</span>.3.3 next-hop-local 
+<span class="token comment">#</span>
+<span class="token builtin class-name">return</span>
+
+</code></pre></div><h2 id="帧中继配置"><a href="#帧中继配置" class="header-anchor">#</a> 帧中继配置</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span>R1<span class="token punctuation">]</span>int s4/0/0
+	<span class="token function">ip</span> addr <span class="token number">192.168</span>.1.1 <span class="token number">24</span>
+	link-protocol fr
+	fr dlci <span class="token number">100</span>
+	fr interface-type dte
+	fr map <span class="token function">ip</span> <span class="token number">192.168</span>.1.2 DLCI<span class="token punctuation">(</span>自己端口<span class="token punctuation">)</span>
+</code></pre></div><h3 id="vlan结合trunk、access、hybird接口配置"><a href="#vlan结合trunk、access、hybird接口配置" class="header-anchor">#</a> vlan结合trunk、access、hybird接口配置</h3> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token punctuation">[</span>SW1<span class="token punctuation">]</span> vlan batch <span class="token number">10</span> <span class="token number">20</span> <span class="token number">30</span>
+	  <span class="token comment"># access口</span>
+	  port link-type access
+	  port default vlan <span class="token number">20</span>
+	  
+	  <span class="token comment">#trunk口</span>
+	  port link-type trunk
+	  port trunk allow-pass vlan <span class="token number">10</span> <span class="token number">20</span> <span class="token number">30</span>
+	  
+	  <span class="token comment">#hybird口</span>
+	  port hybrid untagged vlan <span class="token number">10</span> <span class="token number">30</span>
+	  port hybrid pvid vlan <span class="token number">10</span>
+</code></pre></div><h2 id="vlan配置"><a href="#vlan配置" class="header-anchor">#</a> vlan配置</h2> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token comment"># vlan 划分</span>
+vlan batch <span class="token number">10</span> <span class="token number">20</span> （逐个划分）
+vlan batch <span class="token number">10</span>-12 （范围划分）
+
+<span class="token comment">#vlan检查</span>
+dis vlan 交换机接口对应vlan以及已划分vlan显示 
+dis port vlan active <span class="token comment">#交换机各接口接口类型、接口属于哪个vlan（pvid）以及untagged / tagged list回显</span>
+</code></pre></div><h3 id="三种接口的区别以及vlan-tagged-untagged的解释"><a href="#三种接口的区别以及vlan-tagged-untagged的解释" class="header-anchor">#</a> 三种接口的区别以及vlan tagged untagged的解释</h3> <blockquote><p>ensp交换机默认接口的类型是hybird类型（ 混合接口）在将接口划分至vlan时不可直接由hybird接口划分</p></blockquote> <h4 id="_1-access"><a href="#_1-access" class="header-anchor">#</a> 1.access</h4> <p>一个access口仅仅支持被划分在一个vlan下</p> <p>access口vlan的划分：</p> <p>接口模式下修改接口类型、<strong>p d v （vlan号）</strong></p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token punctuation">[</span>Huawei<span class="token punctuation">]</span>int e0/0/3
+<span class="token punctuation">[</span>Huawei-Ethernet0/0/3<span class="token punctuation">]</span>port link-type access
+<span class="token punctuation">[</span>Huawei-Ethernet0/0/3<span class="token punctuation">]</span>port default vlan <span class="token number">10</span>
+<span class="token punctuation">[</span>Huawei-Ethernet0/0/3<span class="token punctuation">]</span>dis this
+<span class="token comment">#</span>
+interface Ethernet0/0/3
+ port link-type access
+ port default vlan <span class="token number">10</span>
+<span class="token comment">#</span>
+<span class="token builtin class-name">return</span>
+</code></pre></div><p>此时查看active ：</p> <div class="language-shell extra-class"><pre class="language-shell"><code>Eth0/0/3            access       <span class="token number">10</span>      U: <span class="token number">10</span>
+</code></pre></div><p>access接口、pvid为vlan号、untagged list=10</p> <blockquote><p>==untagged list==简而言之就是在发送数据包时，如果匹配上untagged list 则删除tag后发送</p> <p>而==tagged list==就是如果匹配上tagged vlan list ，则保留tag直接发送。即不做任何改变的发送</p></blockquote> <h4 id="_2-trunk"><a href="#_2-trunk" class="header-anchor">#</a> 2.trunk</h4> <p>trunk口可被划分至多个vlan下</p> <h5 id="access改trunk-已经含有配置项"><a href="#access改trunk-已经含有配置项" class="header-anchor">#</a> access改trunk（已经含有配置项）</h5> <blockquote><p>1.==交换机下==清除现有所有配置，但是此时接口会关闭  <code>clear configuration int e0/0/3</code></p> <p>2.undo shutdown 开启接口</p></blockquote> <p>trunk口vlan的划分：</p> <p>plt设置接口类型、<code>port trunk allow-pass vlan ()</code>设置允通过vlan <strong>p t a v 10</strong></p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token punctuation">[</span>Huawei-Ethernet0/0/3<span class="token punctuation">]</span>p l t 
+<span class="token punctuation">[</span>Huawei-Ethernet0/0/3<span class="token punctuation">]</span>port trunk allow-pass vlan <span class="token number">10</span>
+<span class="token punctuation">[</span>Huawei-Ethernet0/0/3<span class="token punctuation">]</span>dis this
+<span class="token comment">#</span>
+interface Ethernet0/0/3
+ port link-type trunk
+ port trunk allow-pass vlan <span class="token number">10</span>
+<span class="token comment">#</span>
+<span class="token builtin class-name">return</span>
+</code></pre></div><p>查看active：</p> <div class="language-sh extra-class"><pre class="language-sh"><code>Eth0/0/3            trunk        <span class="token number">1</span>       U: <span class="token number">1</span>
+                                         T: <span class="token number">10</span>
+</code></pre></div><p>pvid此时为1，可允许vlan10的包到达，但是由于ping包回复时vid=10，与pvid不相等，不允许发出。故此时ping得不到回复</p> <h5 id="试验"><a href="#试验" class="header-anchor">#</a> 试验</h5> <p>trunk口先行设置pvid=10 而不进行allowed设置</p> <p>active查看：</p> <div class="language-sh extra-class"><pre class="language-sh"><code>Eth0/0/4            trunk        <span class="token number">10</span>      T: <span class="token number">1</span>
+</code></pre></div><p>只是单纯的进行了pvid的赋值，但是没有allow vlan10的进入，数据包根本就进不去4接口</p> <p><strong>所以==tagged list==也是当接收的数据包打了tag，判断list中是否含有tag，是否无条件放行的一张列表</strong></p> <p>一个简单的ping包发出，经过接口1，打上接口1对应的pvid。发送至接口2，接口二进行vid与pvid匹配（或tag list中有vid），相同则放行且如果vid在tagged list，去掉tag发走，不在就保留发走。</p></div></article> <div class="main-div vssue"><!----></div></div></main> <aside class="aside" data-v-b3fda33c data-v-b3fda33c><div class="info-card main-div" data-v-1311ce9e data-v-b3fda33c><div class="info-card-header" style="background-size:cover;background-repeat:no-repeat;background-position:center;background-attachment:scroll;background-image:url(/wangdengdeng/avatar-bg.jpeg);" data-v-1311ce9e><img src="/wangdengdeng/avatar-top.jpeg" alt="WangDengdeng" class="info-avatar" data-v-1311ce9e></div> <div class="info-card-body" data-v-1311ce9e><section class="info-name" data-v-1311ce9e>
+      WangDengdeng
+    </section> <section class="info-desc" data-v-1311ce9e>I am a slow walker, but I never walk backwards.<br/>道阻且长,行则将至</section> <section class="info-contact" data-v-1311ce9e><section data-v-1311ce9e><span data-v-1311ce9e data-v-1311ce9e><svg class="icon" style="font-size:1em;" data-v-1311ce9e data-v-1311ce9e><use xlink:href="#icon-location" data-v-1311ce9e data-v-1311ce9e></use></svg><span class="info-text" data-v-1311ce9e data-v-1311ce9e>
+          China
+        </span></span></section> <!----> <section data-v-1311ce9e><span data-v-1311ce9e data-v-1311ce9e><svg class="icon" style="font-size:1em;" data-v-1311ce9e data-v-1311ce9e><use xlink:href="#icon-email" data-v-1311ce9e data-v-1311ce9e></use></svg><span class="info-text" data-v-1311ce9e data-v-1311ce9e>
+          jimmybutler19@163.com
+        </span></span></section></section></div> <div class="info-card-footer" data-v-1311ce9e><p class="footer-sns-link" data-v-1311ce9e></p></div></div> <div class="post-toc main-div aside-toc" style="position:relative;top:0;width:0px;" data-v-b3fda33c><h4>- CATALOG</h4> <div class="post-nav-toc"><ul><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#路由器相关配置">路由器相关配置</a><ul><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#取消警告及提示信息">取消警告及提示信息</a></li></ul></li><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#清除配置">清除配置</a><ul><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#_1-接口配置">1.接口配置</a></li><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#_2-接口信息查询">2.接口信息查询：</a></li></ul></li><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#交换机配置">交换机配置</a></li><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#静态路由配置">静态路由配置：</a></li><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#ospf配置">ospf配置：</a><ul><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#ospf-修改hello和time">ospf 修改Hello和time</a></li><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#ospf-默认路由发布">ospf 默认路由发布</a></li><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#ospf-dr-bdr选举控制">ospf DR/BDR选举控制</a></li></ul></li><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#isis协议配置">ISIS协议配置</a></li><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#bgp协议的配置">BGP协议的配置</a></li><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#帧中继配置">帧中继配置</a><ul><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#vlan结合trunk、access、hybird接口配置">vlan结合trunk、access、hybird接口配置</a></li></ul></li><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#vlan配置">vlan配置</a><ul><li><a href="/wangdengdeng/posts/2023/03/24/ensp.html#三种接口的区别以及vlan-tagged-untagged的解释">三种接口的区别以及vlan tagged untagged的解释</a></li></ul></li></ul></div></div></aside></div> <footer class="footer" data-v-7f2e4136><p class="footer-sns-link"></p> <div class="copyright"><span id="custom">Copyright &copy; WADE_2ng 2020 <br /> 
+        Theme By <a href="https://www.vuepress.cn/" target="_blank">VuePress</a></span> <!----></div></footer></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/wangdengdeng/assets/js/app.f1f99d8b.js" defer></script><script src="/wangdengdeng/assets/js/6.e2e47644.js" defer></script><script src="/wangdengdeng/assets/js/18.6562709a.js" defer></script>
+  </body>
+</html>
